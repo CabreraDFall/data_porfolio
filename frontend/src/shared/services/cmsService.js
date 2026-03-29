@@ -4,7 +4,7 @@ export const cmsService = {
   /**
    * Fetches all projects from Supabase
    */
-  async getProjects() {
+  async getAllProjects() {
     try {
       const { data, error } = await supabase
         .from('projects')
