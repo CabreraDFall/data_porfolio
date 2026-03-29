@@ -7,7 +7,7 @@ const ProjectForm = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     
-    // Detailed Initial State
+    // Detailed Initial State (Aligned with Supabase snake_case)
     const [project, setProject] = useState({
         id: '',
         index: '',
@@ -16,14 +16,14 @@ const ProjectForm = () => {
         domain: '',
         title: '',
         description: '',
-        githubUrl: '',
-        githubHighlightUrl: '',
-        codeTeaser: '',
-        mermaidCode: '',
+        github_url: '',
+        github_highlight_url: '',
+        code_teaser: '',
+        mermaid_code: '',
         tags: [],
         kpis: [],
         challenges: [],
-        detailedAnalysis: { problem: '', solution: '', impact: '' }
+        detailed_analysis: { problem: '', solution: '', impact: '' }
     });
 
     useEffect(() => {
@@ -45,7 +45,7 @@ const ProjectForm = () => {
         const { name, value } = e.target;
         setProject(prev => ({
             ...prev,
-            detailedAnalysis: { ...prev.detailedAnalysis, [name]: value }
+            detailed_analysis: { ...prev.detailed_analysis, [name]: value }
         }));
     };
 
@@ -180,8 +180,8 @@ const ProjectForm = () => {
                          <span className="text-[10px] font-mono text-white/20">LANG: // MERMAID.JS</span>
                     </div>
                     <textarea 
-                        name="mermaidCode"
-                        value={project.mermaidCode} 
+                        name="mermaid_code"
+                        value={project.mermaid_code} 
                         onChange={handleChange}
                         className="w-full h-80 glass-panel-input p-8 bg-[#0d121b] border border-white/5 rounded-3xl font-mono text-xs leading-relaxed text-primary/80 focus:border-primary/30 outline-none shadow-2xl"
                         placeholder="graph TD
@@ -196,15 +196,15 @@ const ProjectForm = () => {
                     <div className="grid gap-12">
                          <div className="space-y-4">
                             <label className="text-[10px] font-mono uppercase text-primary tracking-widest">Problem_Statement</label>
-                            <textarea name="problem" value={project.detailedAnalysis.problem} onChange={handleAnalysisChange} className="w-full h-32 glass-panel-input p-6 bg-white/2 border border-white/5 rounded-2xl text-base font-light italic leading-relaxed" placeholder="The legacy bottleneck..." />
+                            <textarea name="problem" value={project.detailed_analysis.problem} onChange={handleAnalysisChange} className="w-full h-32 glass-panel-input p-6 bg-white/2 border border-white/5 rounded-2xl text-base font-light italic leading-relaxed" placeholder="The legacy bottleneck..." />
                          </div>
                          <div className="space-y-4">
                             <label className="text-[10px] font-mono uppercase text-primary tracking-widest">Architectural_Solution</label>
-                            <textarea name="solution" value={project.detailedAnalysis.solution} onChange={handleAnalysisChange} className="w-full h-32 glass-panel-input p-6 bg-white/2 border border-white/5 rounded-2xl text-base font-light italic leading-relaxed" placeholder="We designed a layer..." />
+                            <textarea name="solution" value={project.detailed_analysis.solution} onChange={handleAnalysisChange} className="w-full h-32 glass-panel-input p-6 bg-white/2 border border-white/5 rounded-2xl text-base font-light italic leading-relaxed" placeholder="We designed a layer..." />
                          </div>
                          <div className="space-y-4">
                             <label className="text-[10px] font-mono uppercase text-primary tracking-widest">Strategic_Impact</label>
-                            <textarea name="impact" value={project.detailedAnalysis.impact} onChange={handleAnalysisChange} className="w-full h-32 glass-panel-input p-6 bg-white/2 border border-white/5 rounded-2xl text-base font-light italic leading-relaxed" placeholder="Final business outcome..." />
+                            <textarea name="impact" value={project.detailed_analysis.impact} onChange={handleAnalysisChange} className="w-full h-32 glass-panel-input p-6 bg-white/2 border border-white/5 rounded-2xl text-base font-light italic leading-relaxed" placeholder="Final business outcome..." />
                          </div>
                     </div>
                 </div>
@@ -252,16 +252,16 @@ const ProjectForm = () => {
                     <div className="grid md:grid-cols-2 gap-8">
                          <div className="space-y-2">
                             <label className="text-[10px] font-mono uppercase text-white/40">repository_root_url</label>
-                            <input name="githubUrl" value={project.githubUrl} onChange={handleChange} className="w-full p-4 glass-panel border border-white/10 rounded-xl font-mono text-[10px]" placeholder="https://github.com/..." />
+                            <input name="github_url" value={project.github_url} onChange={handleChange} className="w-full p-4 glass-panel border border-white/10 rounded-xl font-mono text-[10px]" placeholder="https://github.com/..." />
                          </div>
                          <div className="space-y-2">
                             <label className="text-[10px] font-mono uppercase text-white/40">code_highlight_path</label>
-                            <input name="githubHighlightUrl" value={project.githubHighlightUrl} onChange={handleChange} className="w-full p-4 glass-panel border border-white/10 rounded-xl font-mono text-[10px]" placeholder="...#L100" />
+                            <input name="github_highlight_url" value={project.github_highlight_url} onChange={handleChange} className="w-full p-4 glass-panel border border-white/10 rounded-xl font-mono text-[10px]" placeholder="...#L100" />
                          </div>
                     </div>
                     <div className="space-y-4">
                          <label className="text-[10px] font-mono uppercase text-primary tracking-widest">Logic_Snippet (JSON/Python/SQL)</label>
-                         <textarea name="codeTeaser" value={project.codeTeaser} onChange={handleChange} className="w-full h-48 glass-panel-input p-8 bg-[#0d121b] border border-white/5 rounded-3xl font-mono text-xs text-secondary/80 focus:border-primary/30 outline-none" placeholder="Paste snippets here..." />
+                         <textarea name="code_teaser" value={project.code_teaser} onChange={handleChange} className="w-full h-48 glass-panel-input p-8 bg-[#0d121b] border border-white/5 rounded-3xl font-mono text-xs text-secondary/80 focus:border-primary/30 outline-none" placeholder="Paste snippets here..." />
                     </div>
                 </div>
 

@@ -118,7 +118,7 @@ const ProjectDetailPage = () => {
           <div className="w-full glass-panel rounded-[2rem] border border-white/10 overflow-hidden relative">
              <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#58f5d1_1px,transparent_1px)] [background-size:32px_32px]"></div>
              <div className="relative w-full min-h-[500px] flex items-center justify-center p-8 lg:p-16">
-                <Mermaid chart={project.mermaidCode} />
+                <Mermaid chart={project.mermaid_code} />
                 <div className="absolute top-0 right-0 p-6 flex flex-col items-end gap-2">
                     <span className="text-[10px] font-mono text-primary/40 uppercase tracking-[.4em]">ARCHITECTURE_LOGIC.FLOW</span>
                     <span className="text-[10px] font-mono text-white/20">PROJECT_REF: // {id}</span>
@@ -135,7 +135,7 @@ const ProjectDetailPage = () => {
                     <div className="space-y-4">
                         <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 01 / The Challenge</h3>
                         <p className="text-2xl leading-relaxed font-light text-on-surface-variant first-letter:text-7xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-4 first-letter:mt-1">
-                            {project.detailedAnalysis.problem}
+                            {project.detailed_analysis.problem}
                         </p>
                     </div>
                 </section>
@@ -144,7 +144,7 @@ const ProjectDetailPage = () => {
                     <div className="space-y-4">
                         <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 02 / Advanced implementation</h3>
                         <p className="text-2xl leading-relaxed font-light text-on-surface-variant">
-                            {project.detailedAnalysis.solution}
+                            {project.detailed_analysis.solution}
                         </p>
                         {/* Logic Spotlight */}
                         <div className="pt-8">
@@ -156,12 +156,12 @@ const ProjectDetailPage = () => {
                                         <div className="w-2 h-2 rounded-full bg-[#27c93f]"></div>
                                         <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest pl-4">logic_snippet.ext</span>
                                     </div>
-                                    <a href={project.githubHighlightUrl} target="_blank" className="flex items-center gap-2 text-[8px] font-mono uppercase text-primary hover:text-white transition-colors">
+                                    <a href={project.github_highlight_url} target="_blank" className="flex items-center gap-2 text-[8px] font-mono uppercase text-primary hover:text-white transition-colors">
                                         Source_Code <span className="material-symbols-outlined text-xs">north_east</span>
                                     </a>
                                 </div>
                                 <div className="p-8 font-mono text-sm leading-relaxed overflow-x-auto text-on-surface/80">
-                                    <pre><code>{project.codeTeaser}</code></pre>
+                                    <pre><code>{project.code_teaser}</code></pre>
                                 </div>
                             </div>
                         </div>
@@ -173,13 +173,13 @@ const ProjectDetailPage = () => {
                         <div className="space-y-4">
                             <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 03 / Strategic Impact</h3>
                             <p className="text-2xl leading-relaxed font-light text-on-surface-variant italic border-l-4 border-primary/40 pl-12 bg-primary/5 py-8 rounded-r-3xl">
-                                "{project.detailedAnalysis.impact}"
+                                "{project.detailed_analysis.impact}"
                             </p>
                         </div>
                         {/* Final GitHub Engagement Button */}
                         <div className="pt-8">
                             <a 
-                                href={project.githubUrl}
+                                href={project.github_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-br from-primary to-primary-container text-black font-headline font-bold uppercase tracking-widest rounded-2xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 group"
