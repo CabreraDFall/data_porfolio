@@ -10,6 +10,7 @@ export const ConfigProvider = ({ children }) => {
     browser_title: 'Abraham Cabrera | Data Architect Portfolio',
     hero_tagline: 'Engineering high-throughput, fault-tolerant ecosystems that transform raw complexity into strategic intelligence.',
     skills: ['Python', 'SQL', 'Spark', 'Airflow', 'Snowflake', 'DWH', 'Streaming'],
+    expertise: [],
     github_url: 'https://github.com/AbrahamCabrera',
     linkedin_url: '#',
     system_status: 'Optimal',

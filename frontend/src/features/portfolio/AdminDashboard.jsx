@@ -42,13 +42,22 @@ const AdminDashboard = () => {
                         <h1 className="text-4xl font-headline font-bold tracking-tighter">CMS_CONTROL_CENTER</h1>
                         <p className="text-on-surface-variant font-mono text-xs uppercase tracking-widest text-primary">System: // ACTIVE_MANAGEMENT</p>
                     </div>
-                    <button 
-                        onClick={() => navigate('/admin/new')}
-                        className="px-6 py-3 bg-primary text-black font-headline font-bold uppercase tracking-widest rounded-xl hover:shadow-[0_0_30px_rgba(88,245,209,0.3)] transition-all flex items-center gap-2"
-                    >
-                        <span className="material-symbols-outlined">add</span>
-                        New Architecture
-                    </button>
+                    <div className="flex gap-4">
+                        <button 
+                            onClick={() => navigate('/admin/config')}
+                            className="px-6 py-3 border border-white/10 text-on-surface-variant font-mono text-[10px] uppercase tracking-widest rounded-xl hover:bg-white/5 transition-all flex items-center gap-2"
+                        >
+                            <span className="material-symbols-outlined text-sm">settings</span>
+                            Global_Config
+                        </button>
+                        <button 
+                            onClick={() => navigate('/admin/new')}
+                            className="px-6 py-3 bg-primary text-black font-headline font-bold uppercase tracking-widest rounded-xl hover:shadow-[0_0_30px_rgba(88,245,209,0.3)] transition-all flex items-center gap-2"
+                        >
+                            <span className="material-symbols-outlined">add</span>
+                            New Architecture
+                        </button>
+                    </div>
                 </div>
 
                 <div className="glass-panel overflow-hidden border border-white/10 rounded-2xl bg-surface-container-lowest/10">

@@ -126,6 +126,63 @@ const ConfigDashboard = () => {
                          </div>
                     </div>
                 </div>
+
+                {/* Technical Expertise Domains */}
+                <div className="space-y-8 glass-panel p-12 bg-white/2 border border-white/5 rounded-[2rem]">
+                    <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                        <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.3em]">Strategic_Technical_Expertise</h3>
+                        <button type="button" onClick={() => setSettings(prev => ({ 
+                            ...prev, 
+                            expertise: [...prev.expertise, { title: '', description: '', icon: 'database', color: 'from-primary/20' }] 
+                        }))} className="text-[10px] font-mono text-primary hover:underline">APPEND_DOMAIN</button>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {settings.expertise?.map((item, index) => (
+                            <div key={index} className="p-6 bg-white/2 border border-white/5 rounded-2xl space-y-4 relative group">
+                                <button type="button" onClick={() => setSettings(prev => ({
+                                    ...prev,
+                                    expertise: prev.expertise.filter((_, i) => i !== index)
+                                }))} className="absolute top-4 right-4 text-white/10 hover:text-primary transition-colors">
+                                    <span className="material-symbols-outlined text-sm">close</span>
+                                </button>
+                                <div className="space-y-2">
+                                    <label className="text-[8px] font-mono uppercase text-white/20 tracking-widest">Domain_Title</label>
+                                    <input value={item.title} onChange={e => {
+                                        const newExpertise = [...settings.expertise];
+                                        newExpertise[index].title = e.target.value;
+                                        setSettings({...settings, expertise: newExpertise});
+                                    }} className="w-full bg-transparent border-b border-white/5 p-1 font-bold text-sm" />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-[8px] font-mono uppercase text-white/20 tracking-widest">Description</label>
+                                    <textarea value={item.description} onChange={e => {
+                                        const newExpertise = [...settings.expertise];
+                                        newExpertise[index].description = e.target.value;
+                                        setSettings({...settings, expertise: newExpertise});
+                                    }} className="w-full bg-transparent border border-white/5 p-2 text-[11px] font-light leading-relaxed" />
+                                </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                     <div className="space-y-2">
+                                        <label className="text-[8px] font-mono uppercase text-white/20 tracking-widest">Icon_ID</label>
+                                        <input value={item.icon} onChange={e => {
+                                            const newExpertise = [...settings.expertise];
+                                            newExpertise[index].icon = e.target.value;
+                                            setSettings({...settings, expertise: newExpertise});
+                                        }} className="w-full bg-transparent border-b border-white/5 p-1 text-[10px] font-mono" />
+                                     </div>
+                                     <div className="space-y-2">
+                                        <label className="text-[8px] font-mono uppercase text-white/20 tracking-widest">Gradient_Class</label>
+                                        <input value={item.color} onChange={e => {
+                                            const newExpertise = [...settings.expertise];
+                                            newExpertise[index].color = e.target.value;
+                                            setSettings({...settings, expertise: newExpertise});
+                                        }} className="w-full bg-transparent border-b border-white/5 p-1 text-[10px] font-mono" />
+                                     </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </form>
         </div>
     );

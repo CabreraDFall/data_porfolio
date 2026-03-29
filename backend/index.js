@@ -104,7 +104,8 @@ app.get('/api/settings', async (req, res) => {
     // Parse JSON fields
     const parsedSettings = {
       ...settings,
-      skills: JSON.parse(settings.skills || '[]')
+      skills: JSON.parse(settings.skills || '[]'),
+      expertise: JSON.parse(settings.expertise || '[]')
     };
     
     res.json(parsedSettings);
@@ -117,7 +118,8 @@ app.put('/api/settings', async (req, res) => {
   try {
     const settingsData = {
       ...req.body,
-      skills: JSON.stringify(req.body.skills || [])
+      skills: JSON.stringify(req.body.skills || []),
+      expertise: JSON.stringify(req.body.expertise || [])
     };
 
     // We only ever have one settings record (id: 1)
