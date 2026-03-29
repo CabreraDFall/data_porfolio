@@ -45,7 +45,7 @@ const Projects = () => {
       <div className="max-w-[1440px] mx-auto">
         {/* Header Section from Image */}
         <div className="flex justify-between items-baseline mb-16 border-b border-outline-variant/10 pb-6">
-          <h2 className="text-4xl lg:text-5xl font-headline font-bold text-on-surface tracking-tight uppercase">
+          <h2 className="text-3xl lg:text-4xl font-headline font-bold text-on-surface tracking-tight uppercase">
             DEPLOYED_ARCHITECTURES
           </h2>
           <div className="text-[10px] font-mono text-primary uppercase tracking-widest hidden md:block">
