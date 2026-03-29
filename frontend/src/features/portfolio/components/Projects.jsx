@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
-import ProjectDetail from './ProjectDetail';
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const navigate = useNavigate();
 
   const projectData = [
     {
@@ -59,20 +59,12 @@ const Projects = () => {
             <div key={project.id} className="bg-surface p-1">
               <ProjectCard 
                 {...project} 
-                onViewDeepDive={() => setSelectedProject(project)}
+                onViewDeepDive={() => navigate(`/project/${project.id}`)}
               />
             </div>
           ))}
         </div>
       </div>
-
-      {/* Detail Overlay / CMS View */}
-      {selectedProject && (
-        <ProjectDetail 
-          project={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
-        />
-      )}
     </section>
   );
 };
