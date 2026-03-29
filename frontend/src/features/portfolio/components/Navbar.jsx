@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useConfig } from '../../../shared/context/ConfigContext';
 
 const Navbar = () => {
+    const { config } = useConfig();
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -24,7 +26,9 @@ const Navbar = () => {
             <div className="glass-panel p-2 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.3)] bg-surface-container-lowest/30 backdrop-blur-2xl">
                 <ul className="flex items-center justify-between px-6 py-2">
                     <li className="hidden md:block">
-                        <span className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Synthetic.Architect</span>
+                        <span className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">
+                            {config.name.split(' ')[0]}.Architect
+                        </span>
                     </li>
                     <div className="flex gap-1 md:gap-4 items-center">
                         {navItems.map((item) => (

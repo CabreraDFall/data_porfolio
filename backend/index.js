@@ -95,6 +95,39 @@ app.delete('/api/projects/:id', async (req, res) => {
   }
 });
 
+// Settings Management
+app.get('/api/settings', async (req, res) => {
+  try {
+    const settings = await db('settings').first();
+    if (!settings) return res.status(404).json({ error: 'Settings not initialized' });
+    
+    // Parse JSON fields
+    const parsedSettings = {
+      ...settings,
+      skills: JSON.parse(settings.skills || '[]')
+    };
+    
+    res.json(parsedSettings);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.put('/api/settings', async (req, res) => {
+  try {
+    const settingsData = {
+      ...req.body,
+      skills: JSON.stringify(req.body.skills || [])
+    };
+
+    // We only ever have one settings record (id: 1)
+    await db('settings').where({ id: 1 }).update(settingsData);
+    res.json({ message: 'Settings updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

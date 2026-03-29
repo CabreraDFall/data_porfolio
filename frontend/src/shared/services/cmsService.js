@@ -78,5 +78,35 @@ export const cmsService = {
     } catch (error) {
         throw error;
     }
+  },
+
+  /**
+   * Fetches global portfolio settings
+   */
+  async getSettings() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/settings`);
+      if (!response.ok) throw new Error('Failed to fetch portfolio settings');
+      return await response.json();
+    } catch (error) {
+       console.error("SETTINGS_FETCH_ERROR:", error);
+       throw error;
+    }
+  },
+
+  /**
+   * Updates global portfolio settings (Admin Only)
+   */
+  async updateSettings(settings) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/settings`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings),
+      });
+      return await response.json();
+    } catch (error) {
+       throw error;
+    }
   }
 };

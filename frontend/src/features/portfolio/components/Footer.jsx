@@ -1,9 +1,12 @@
 import React from 'react';
+import { useConfig } from '../../../shared/context/ConfigContext';
 
 const Footer = () => {
+  const { config } = useConfig();
+  
   const links = [
-    { label: "GitHub", href: "#" },
-    { label: "LinkedIn", href: "#" },
+    { label: "GitHub", href: config.github_url },
+    { label: "LinkedIn", href: config.linkedin_url },
     { label: "Email", href: "#" },
     { label: "Download Resume", href: "#" },
   ];
@@ -12,7 +15,7 @@ const Footer = () => {
     <footer className="w-full py-12 px-6 mt-auto bg-[#081423] border-t border-white/5">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 w-full max-w-[1440px] mx-auto">
         <div className="font-body text-xs uppercase tracking-widest text-[#d7e3f9]/50">
-          © {new Date().getFullYear()} Synthetic Architect. Engineered for Precision.
+          {config.footer_text}
         </div>
         <div className="flex gap-8 font-body text-xs uppercase tracking-widest">
           {links.map((link) => (
@@ -20,6 +23,8 @@ const Footer = () => {
               key={link.label}
               className="text-[#d7e3f9]/50 hover:text-[#58f5d1] transition-colors focus:outline-none focus:ring-1 focus:ring-[#58f5d1]" 
               href={link.href}
+              target={link.href.startsWith('http') ? "_blank" : "_self"}
+              rel="noreferrer"
             >
               {link.label}
             </a>
