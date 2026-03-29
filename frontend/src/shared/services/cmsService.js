@@ -1,35 +1,82 @@
 /**
  * CMS Service
- * Simulates a Headless CMS interaction by fetching project data from a static JSON endpoint.
+ * Connects the frontend to the custom Node/Express/SQLite backend.
  */
 
-const DATA_URL = '/data/projects.json';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 export const cmsService = {
   /**
-   * Fetches all projects from the "CMS"
-   * @returns {Promise<Array>} List of project objects
+   * Fetches all projects from the SQLite DB
    */
   async getAllProjects() {
     try {
-      const response = await fetch(DATA_URL);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch projects: ${response.statusText}`);
-      }
-      return await response.ok ? response.json() : [];
+      const response = await fetch(`${API_BASE_URL}/projects`);
+      if (!response.ok) throw new Error('Failed to fetch from SQL Engine');
+      return await response.json();
     } catch (error) {
-      console.error("CMS_SERVICE_ERROR:", error);
+      console.error("CMS_FETCH_ERROR:", error);
       throw error;
     }
   },
 
   /**
    * Fetches a single project by ID
-   * @param {string} id - The project identifier
-   * @returns {Promise<Object|null>} The matching project or null
    */
   async getProjectById(id) {
-    const projects = await this.getAllProjects();
-    return projects.find(p => p.id === id) || null;
+    try {
+      const response = await fetch(`${API_BASE_URL}/projects/${id}`);
+      if (!response.ok) throw new Error('Architecture not found in SQL DB');
+      return await response.json();
+    } catch (error) {
+      console.error("CMS_DETAIL_ERROR:", error);
+      throw error;
+    }
+  },
+
+  /**
+   * Create a new project (Admin Only)
+   */
+  async createProject(project) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/projects`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(project),
+      });
+      return await response.json();
+    } catch (error) {
+        throw error;
+    }
+  },
+
+  /**
+   * Update an existing project (Admin Only)
+   */
+  async updateProject(id, project) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(project),
+      });
+      return await response.json();
+    } catch (error) {
+        throw error;
+    }
+  },
+
+  /**
+   * Decommission an architecture (Admin Only)
+   */
+  async deleteProject(id) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
+        method: 'DELETE',
+      });
+      return await response.json();
+    } catch (error) {
+        throw error;
+    }
   }
 };
