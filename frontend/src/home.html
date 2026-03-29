@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synthetic.Architect | Data Engineering Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Roboto+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-container": "#3c4962",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#bbc9cf",
+                        "tertiary": "#ffd79f",
+                        "surface-container-high": "#1f2b3b",
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "on-primary-fixed-variant": "#005142",
+                        "inverse-primary": "#006b58",
+                        "inverse-surface": "#d7e3f9",
+                        "surface": "#081423",
+                        "on-background": "#d7e3f9",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#38debb",
+                        "on-secondary-container": "#abb9d6",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "inverse-on-surface": "#263141",
+                        "on-tertiary": "#442b00",
+                        "surface-tint": "#38debb",
+                        "on-primary-container": "#005a49",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#291800",
+                        "on-primary-fixed": "#002019",
+                        "primary-fixed": "#5ffbd6",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#d7e3f9",
+                        "background": "#081423",
+                        "on-primary": "#00382d",
+                        "on-error": "#690005",
+                        "secondary": "#b9c7e4",
+                        "outline-variant": "#3c494e",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "tertiary-fixed-dim": "#ffba4a",
+                        "surface-variant": "#2a3546",
+                        "primary": "#58f5d1",
+                        "surface-container-lowest": "#040f1e",
+                        "surface-container-low": "#111c2c",
+                        "primary-container": "#2fd8b5",
+                        "tertiary-container": "#ffb229",
+                        "surface-dim": "#081423",
+                        "on-tertiary-container": "#6c4700",
+                        "on-secondary-fixed": "#0d1c32",
+                        "surface-container": "#152030",
+                        "surface-bright": "#2f3a4b",
+                        "outline": "#859399",
+                        "surface-container-highest": "#2a3546",
+                        "on-secondary": "#233148",
+                        "tertiary-fixed": "#ffddb1"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["Roboto Mono"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+        }
+        @media (max-width: 768px) {
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#081423]/60 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-navy-900/50">
+<div class="flex items-center justify-between px-6 py-3 w-full max-w-[1440px] mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#58f5d1] font-headline">
+                Synthetic.Architect
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-['Space_Grotesk'] tracking-tight text-sm font-medium">
+<a class="text-[#d7e3f9] border-b-2 border-[#58f5d1] pb-1" href="#">Network</a>
+<a class="text-[#d7e3f9]/70 hover:text-[#d7e3f9] transition-colors hover:bg-white/5 rounded-lg px-2 py-1" href="#">Pipelines</a>
+<a class="text-[#d7e3f9]/70 hover:text-[#d7e3f9] transition-colors hover:bg-white/5 rounded-lg px-2 py-1" href="#">Infrastructure</a>
+<a class="text-[#d7e3f9]/70 hover:text-[#d7e3f9] transition-colors hover:bg-white/5 rounded-lg px-2 py-1" href="#">Insights</a>
+<a class="text-[#d7e3f9]/70 hover:text-[#d7e3f9] transition-colors hover:bg-white/5 rounded-lg px-2 py-1" href="#">Projects</a>
+<a class="text-[#d7e3f9]/70 hover:text-[#d7e3f9] transition-colors hover:bg-white/5 rounded-lg px-2 py-1" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#d7e3f9]/70 hover:text-[#58f5d1] hover:bg-white/5 rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#d7e3f9]/70 hover:text-[#58f5d1] hover:bg-white/5 rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-primary/20" data-alt="Close-up professional headshot of a developer with a neutral background and cinematic cool-toned lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC198ILfWqjurepr_1wpnmiPG_pSLAKU1zjuk_M9nV3lu3WSNVUvhTiOs6YezoyNADR7mQ1_huXrTBRTKZq4BgyNgrN4GIY5K2mQ5wsgveruMEqs4JpWLXz_isttUAPWZaRE0OjBueSo5uCFU0WrKDRBu4xRdhU6ZLgihgJ5-owx_QFGdcI_CKKRLxPoX8Irrt3XERt8nkVFnIWvdJkvc6s0HYInQ8MeN-DXH__r3U_V_kC3WYAV1GAj2b9KoKcDfz5gWBuwKYmzY"/>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden px-6 lg:px-20">
+<!-- Background Visuals -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-br from-surface via-surface-container-lowest to-surface"></div>
+<!-- Abstract Data Viz (CSS) -->
+<div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[100px]"></div>
+<!-- Data Nodes Pattern Overlay -->
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#58f5d1 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<div class="relative z-10 w-full max-w-[1440px] mx-auto asymmetric-grid items-center gap-16">
+<!-- Hero Content -->
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-mono uppercase tracking-widest text-on-surface-variant">System Status: Optimal</span>
+</div>
+<div>
+<h1 class="text-7xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface mb-4 leading-[0.9]">
+                            Data <span class="text-primary">Engineer</span>
+</h1>
+<p class="text-xl lg:text-2xl font-light text-on-surface-variant max-w-xl">
+                            Architecting Scalable Data Systems with high-availability infrastructure and predictive intelligence.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">Python</span>
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">SQL</span>
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">Apache Spark</span>
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">Airflow</span>
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">dbt</span>
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">Power BI</span>
+<span class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant/10 text-secondary text-sm font-mono">AWS</span>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                            Initialize Project
+                        </button>
+<button class="px-8 py-4 border border-outline-variant/20 text-on-surface font-medium rounded-lg hover:bg-surface-container-high transition-all">
+                            View Documentation
+                        </button>
+</div>
+</div>
+<!-- Hero Graphic (Abstract Node Connections) -->
+<div class="hidden lg:block relative">
+<div class="aspect-square w-full bg-surface-container/30 rounded-2xl border border-outline-variant/10 glass-panel overflow-hidden p-8 flex items-center justify-center">
+<div class="relative w-full h-full">
+<!-- Visual Representation of Nodes/Flow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-40">
+<svg class="w-full h-full stroke-primary/30 fill-none" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="40" stroke-width="0.5"></circle>
+<circle cx="100" cy="100" r="70" stroke-dasharray="4 4" stroke-width="0.5"></circle>
+<path d="M100 20 L100 60 M100 140 L100 180 M20 100 L60 100 M140 100 L180 100" stroke-width="1"></path>
+<circle cx="100" cy="20" fill="#58f5d1" r="3"></circle>
+<circle cx="100" cy="180" fill="#58f5d1" r="3"></circle>
+<circle cx="20" cy="100" fill="#ffd79f" r="3"></circle>
+<circle cx="180" cy="100" fill="#58f5d1" r="3"></circle>
+</svg>
+</div>
+<div class="absolute inset-0 flex flex-col justify-between p-6">
+<div class="flex justify-between items-start">
+<div class="bg-surface-container-highest/80 p-3 rounded-lg border border-outline-variant/20">
+<div class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-mono">Source Node</div>
+<div class="text-sm font-bold text-primary font-headline">Ingestion_S3</div>
+</div>
+<div class="bg-surface-container-highest/80 p-3 rounded-lg border border-outline-variant/20">
+<div class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-mono">Active Streams</div>
+<div class="text-sm font-bold text-tertiary font-headline">14 Active</div>
+</div>
+</div>
+<div class="self-center bg-primary/10 px-4 py-2 rounded border border-primary/20 backdrop-blur-md">
+<div class="text-[10px] uppercase text-center tracking-tighter text-primary font-mono">Processing Core</div>
+<div class="text-xs font-mono text-on-surface">Cluster_ID: SPARK-8821</div>
+</div>
+<div class="flex justify-center">
+<div class="bg-surface-container-highest/80 p-3 rounded-lg border border-outline-variant/20 w-48">
+<div class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-mono">Data Flow</div>
+<div class="h-1 bg-surface-container-lowest mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dashboard Metrics -->
+<section class="bg-surface-container-low/50 py-16 border-y border-white/5 px-6 lg:px-20">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-16">
+<div class="space-y-1">
+<div class="text-4xl lg:text-5xl font-headline font-bold text-on-surface">1.2k+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="terminal">terminal</span>
+                            Pipelines Executed
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="text-4xl lg:text-5xl font-headline font-bold text-on-surface">500TB+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="database">database</span>
+                            Data Processed
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="text-4xl lg:text-5xl font-headline font-bold text-on-surface">45+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="cloud_done">cloud_done</span>
+                            Systems Deployed
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="text-4xl lg:text-5xl font-headline font-bold text-primary">99.99%</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-mono text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="bolt">bolt</span>
+                            Uptime SLA
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Network / Node Connections Section -->
+<section class="py-24 px-6 lg:px-20" id="network">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-16">
+<h2 class="text-3xl lg:text-5xl font-headline font-bold text-on-surface mb-4">Network</h2>
+<div class="h-1 w-20 bg-primary"></div>
+<p class="mt-6 text-on-surface-variant max-w-2xl font-light leading-relaxed">
+                        Visualizing the interconnection of complex data infrastructures. Every node represents a critical service point in the distributed ecosystem.
+                    </p>
+</div>
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- Network Visualization Card -->
+<div class="lg:col-span-2 relative h-[500px] bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden group">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<img class="w-full h-full object-cover mix-blend-overlay" data-alt="abstract close-up of computer server LEDs and cables glowing neon blue in a dark data center environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAooBfYi1tP1rFCfgRSHlIPpWEo28nfmx4I8NantS7srgdNxda1QcoooyZEmpeHWvwLqDjRMBTVP0tqXcf59K3MPMhZSfYvDOmjeo1n84ndh6tEa0vuDw1i2-ChRG1fjgrtvNGMu5w0JN87yF6lxbD832MFwsgJ7al4bQzbJtTS84lIRX_-1PZx0uS_crzRT8M06fM231VY-lwwG2F5ydMgahw7eywrU5nJQFf11Cmm4uNCs2I53p-w3ATQA2bD5Ac179OzjwmvOCs"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<!-- Simulated Interactive Network Map -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative w-3/4 h-3/4">
+<!-- Node 1 -->
+<div class="absolute top-[10%] left-[20%] group/node">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg border border-primary/40 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(88,245,209,0.3)]">
+<span class="material-symbols-outlined" data-icon="router">router</span>
+</div>
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/node:opacity-100 transition-opacity bg-surface-container-high px-2 py-1 rounded text-[10px] text-on-surface font-mono">Gateway_01</div>
+</div>
+<!-- Node 2 -->
+<div class="absolute bottom-[20%] left-[40%] group/node">
+<div class="w-16 h-16 bg-surface-container-highest rounded-lg border border-tertiary/40 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+</div>
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/node:opacity-100 transition-opacity bg-surface-container-high px-2 py-1 rounded text-[10px] text-on-surface font-mono">Process_Compute</div>
+</div>
+<!-- Node 3 -->
+<div class="absolute top-[40%] right-[10%] group/node">
+<div class="w-14 h-14 bg-surface-container-highest rounded-lg border border-primary/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="storage">storage</span>
+</div>
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/node:opacity-100 transition-opacity bg-surface-container-high px-2 py-1 rounded text-[10px] text-on-surface font-mono">Warehouse_A</div>
+</div>
+<!-- Connection Lines (Simplified SVG) -->
+<svg class="absolute inset-0 w-full h-full stroke-primary/20 fill-none pointer-events-none">
+<path d="M25% 15% L45% 75% L85% 45% Z" stroke-width="1"></path>
+</svg>
+</div>
+</div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div class="space-y-1">
+<div class="text-xs font-mono text-primary uppercase tracking-widest">Global Status</div>
+<div class="text-2xl font-headline font-bold text-on-surface">Synchronized</div>
+</div>
+<div class="flex gap-2">
+<div class="w-10 h-1 bg-primary/20 rounded-full overflow-hidden"><div class="w-full h-full bg-primary origin-left scale-x-75"></div></div>
+<div class="w-10 h-1 bg-primary/20 rounded-full overflow-hidden"><div class="w-full h-full bg-primary origin-left scale-x-50"></div></div>
+<div class="w-10 h-1 bg-primary/20 rounded-full overflow-hidden"><div class="w-full h-full bg-primary origin-left scale-x-90"></div></div>
+</div>
+</div>
+</div>
+<!-- Side Stats Panel -->
+<div class="space-y-8">
+<div class="p-6 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<div class="font-mono text-xs text-on-surface-variant uppercase tracking-widest">Active Nodes</div>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="hub">hub</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Compute Clusters</span>
+<span class="text-on-surface font-mono">24 / 24</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Data Warehouses</span>
+<span class="text-on-surface font-mono">12 / 12</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">API Endpoints</span>
+<span class="text-on-surface font-mono">156 / 158</span>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="font-mono text-xs text-on-surface-variant uppercase tracking-widest mb-4">Traffic Insights</div>
+<div class="aspect-video w-full bg-surface-container-lowest rounded-lg overflow-hidden flex items-end p-2 gap-1">
+<div class="flex-1 bg-primary/40 rounded-t h-[40%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t h-[60%]"></div>
+<div class="flex-1 bg-primary/30 rounded-t h-[30%]"></div>
+<div class="flex-1 bg-primary/80 rounded-t h-[80%]"></div>
+<div class="flex-1 bg-primary/50 rounded-t h-[50%]"></div>
+<div class="flex-1 bg-primary/90 rounded-t h-[95%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[45%]"></div>
+</div>
+<div class="mt-4 text-xs font-mono text-on-surface-variant flex justify-between">
+<span>00:00</span>
+<span class="text-primary">Current Traffic Spike</span>
+<span>23:59</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 mt-auto bg-[#081423] border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 w-full max-w-[1440px] mx-auto">
+<div class="font-['Inter'] text-xs uppercase tracking-widest text-[#d7e3f9]/50">
+                © 2024 Synthetic Architect. Engineered for Precision.
+            </div>
+<div class="flex gap-8 font-['Inter'] text-xs uppercase tracking-widest">
+<a class="text-[#d7e3f9]/50 hover:text-[#58f5d1] transition-colors focus:outline-none focus:ring-1 focus:ring-[#58f5d1]" href="#">GitHub</a>
+<a class="text-[#d7e3f9]/50 hover:text-[#58f5d1] transition-colors focus:outline-none focus:ring-1 focus:ring-[#58f5d1]" href="#">LinkedIn</a>
+<a class="text-[#d7e3f9]/50 hover:text-[#58f5d1] transition-colors focus:outline-none focus:ring-1 focus:ring-[#58f5d1]" href="#">Email</a>
+<a class="text-[#d7e3f9]/50 hover:text-[#58f5d1] transition-colors focus:outline-none focus:ring-1 focus:ring-[#58f5d1]" href="#">Download Resume</a>
+</div>
+</div>
+</footer>
+</body></html>
