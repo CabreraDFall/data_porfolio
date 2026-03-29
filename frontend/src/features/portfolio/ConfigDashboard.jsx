@@ -11,11 +11,17 @@ const ConfigDashboard = () => {
         role: '',
         browser_title: '',
         hero_tagline: '',
+        about_subtitle: '',
+        about_bio: '',
+        about_quote: '',
+        about_quote_author: '',
+        about_image_url: '',
         skills: [],
         github_url: '',
         linkedin_url: '',
         system_status: '',
-        footer_text: ''
+        footer_text: '',
+        expertise: []
     });
     const [loading, setLoading] = useState(true);
 
@@ -124,6 +130,41 @@ const ConfigDashboard = () => {
                             <label className="text-[10px] font-mono uppercase text-white/40">LinkedIn_Profile_URL</label>
                             <input name="linkedin_url" value={settings.linkedin_url} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 p-2 font-mono text-xs" />
                          </div>
+                         <div className="space-y-4">
+                            <label className="text-[10px] font-mono uppercase text-white/40">Curriculum_Vitae_URL (CV Link)</label>
+                            <input name="cv_url" value={settings.cv_url} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 p-2 font-mono text-xs text-primary" placeholder="Google Drive / Dropbox Link..." />
+                         </div>
+                    </div>
+                </div>
+
+                {/* About Me / Biography */}
+                <div className="space-y-8 glass-panel p-12 bg-white/2 border border-white/5 rounded-[2rem]">
+                    <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.3em] border-b border-white/5 pb-4">Biographical_Narrative_Ingestion</h3>
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-mono uppercase text-white/40">About_Subtitle (Headline)</label>
+                                <input name="about_subtitle" value={settings.about_subtitle} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 p-2 font-headline font-bold text-lg" />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-mono uppercase text-white/40">Biography_Text</label>
+                                <textarea name="about_bio" value={settings.about_bio} onChange={handleChange} className="w-full h-48 bg-transparent border border-white/5 rounded-2xl p-4 font-light text-sm leading-relaxed" />
+                            </div>
+                        </div>
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-mono uppercase text-white/40">Profile_Image_URL</label>
+                                <input name="about_image_url" value={settings.about_image_url} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 p-2 font-mono text-xs" />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-mono uppercase text-white/40">Philosophy_Quote</label>
+                                <textarea name="about_quote" value={settings.about_quote} onChange={handleChange} className="w-full h-20 bg-transparent border border-white/5 rounded-2xl p-4 font-light italic text-xs" />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-mono uppercase text-white/40">Quote_Author</label>
+                                <input name="about_quote_author" value={settings.about_quote_author} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 p-2 font-headline font-bold text-sm" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 

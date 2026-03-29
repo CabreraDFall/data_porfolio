@@ -43,14 +43,22 @@ const Hero = () => {
             ))}
           </div>
           <div className="flex items-center gap-8 pt-8">
-            <button className="group relative px-10 py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase tracking-widest rounded-xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 flex items-center gap-3 overflow-hidden">
+            <a 
+              href={config.cv_url} 
+              target="_blank" 
+              rel="noreferrer"
+              className="group relative px-10 py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase tracking-widest rounded-xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 flex items-center gap-3 overflow-hidden"
+            >
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-              <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">bolt</span>
-              Initialize Deep Dive
-            </button>
-            <a href={config.github_url} target="_blank" rel="noreferrer" className="px-10 py-5 border border-outline-variant/20 text-on-surface font-headline font-bold uppercase tracking-widest rounded-xl hover:bg-surface-container-high hover:border-primary/20 transition-all flex items-center gap-3">
-              <span className="material-symbols-outlined text-sm">hub</span>
-              View Social Node
+              <span className="material-symbols-outlined group-hover:rotate-12 transition-transform text-xl">download</span>
+              Descargar CV
+            </a>
+            <a 
+              href="#projects" 
+              className="px-10 py-5 border border-outline-variant/20 text-on-surface font-headline font-bold uppercase tracking-widest rounded-xl hover:bg-surface-container-high hover:border-primary/20 transition-all flex items-center gap-3"
+            >
+              <span className="material-symbols-outlined text-sm text-primary">analytics</span>
+              Explorar Arquitecturas
             </a>
           </div>
         </div>

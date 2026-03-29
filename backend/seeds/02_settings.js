@@ -16,8 +16,14 @@ exports.seed = async function(knex) {
       skills: JSON.stringify(['Python', 'SQL', 'Spark', 'Airflow', 'Snowflake', 'DWH', 'Streaming']),
       github_url: "https://github.com/AbrahamCabrera",
       linkedin_url: "#",
+      cv_url: "#",
       system_status: "Optimal",
       footer_text: "© 2026 Abraham Cabrera. Engineered for Precision.",
+      about_subtitle: "Código con propósito",
+      about_bio: "Creo que el mejor código es el que resuelve problemas reales sin añadir complejidad innecesaria. Mi filosofía: elegancia en la simplicidad. Cada proyecto es una oportunidad de fusionar creatividad con ingeniería. Me especializo en crear experiencias digitales que no solo funcionan perfectamente, sino que inspiran. Estoy en la etapa de aprendizaje y crecimiento constante, y disfruto cada desafío que me propone la tecnología.",
+      about_quote: '"El único modo de hacer un gran trabajo es amar lo que haces."',
+      about_quote_author: "Steve Jobs",
+      about_image_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3387&auto=format&fit=crop",
       expertise: JSON.stringify([
         {
           title: "Data Lakehouse",

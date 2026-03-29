@@ -9,10 +9,16 @@ export const ConfigProvider = ({ children }) => {
     role: 'Data Architect',
     browser_title: 'Abraham Cabrera | Data Architect Portfolio',
     hero_tagline: 'Engineering high-throughput, fault-tolerant ecosystems that transform raw complexity into strategic intelligence.',
+    about_subtitle: 'Código con propósito',
+    about_bio: '',
+    about_quote: '',
+    about_quote_author: '',
+    about_image_url: '',
     skills: ['Python', 'SQL', 'Spark', 'Airflow', 'Snowflake', 'DWH', 'Streaming'],
     expertise: [],
     github_url: 'https://github.com/AbrahamCabrera',
     linkedin_url: '#',
+    cv_url: '#',
     system_status: 'Optimal',
     footer_text: '© 2026 Abraham Cabrera. Engineered for Precision.'
   });
