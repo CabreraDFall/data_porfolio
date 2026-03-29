@@ -1,22 +1,21 @@
-/**
- * CMS Service
- * Connects the frontend to the custom Node/Express/SQLite backend.
- */
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { supabase } from '../../lib/supabaseClient';
 
 export const cmsService = {
   /**
-   * Fetches all projects from the SQLite DB
+   * Fetches all projects from Supabase
    */
-  async getAllProjects() {
+  async getProjects() {
     try {
-      const response = await fetch(`${API_BASE_URL}/projects`);
-      if (!response.ok) throw new Error('Failed to fetch from SQL Engine');
-      return await response.json();
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('index', { ascending: true });
+        
+      if (error) throw error;
+      return data || [];
     } catch (error) {
-      console.error("CMS_FETCH_ERROR:", error);
-      throw error;
+      console.error("SUPABASE_FETCH_ERROR:", error);
+      return [];
     }
   },
 
@@ -25,86 +24,104 @@ export const cmsService = {
    */
   async getProjectById(id) {
     try {
-      const response = await fetch(`${API_BASE_URL}/projects/${id}`);
-      if (!response.ok) throw new Error('Architecture not found in SQL DB');
-      return await response.json();
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('id', id)
+        .single();
+        
+      if (error) throw error;
+      return data;
     } catch (error) {
-      console.error("CMS_DETAIL_ERROR:", error);
-      throw error;
+      console.error("SUPABASE_SINGLE_FETCH_ERROR:", error);
+      return null;
     }
   },
 
   /**
-   * Create a new project (Admin Only)
+   * Creates a new project in Supabase (Postgres)
    */
   async createProject(project) {
     try {
-      const response = await fetch(`${API_BASE_URL}/projects`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(project),
-      });
-      return await response.json();
+      const { data, error } = await supabase
+        .from('projects')
+        .insert([project])
+        .select();
+        
+      if (error) throw error;
+      return data[0];
     } catch (error) {
-        throw error;
-    }
-  },
-
-  /**
-   * Update an existing project (Admin Only)
-   */
-  async updateProject(id, project) {
-    try {
-      const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(project),
-      });
-      return await response.json();
-    } catch (error) {
-        throw error;
-    }
-  },
-
-  /**
-   * Decommission an architecture (Admin Only)
-   */
-  async deleteProject(id) {
-    try {
-      const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
-        method: 'DELETE',
-      });
-      return await response.json();
-    } catch (error) {
-        throw error;
-    }
-  },
-
-  /**
-   * Fetches global portfolio settings
-   */
-  async getSettings() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/settings`);
-      if (!response.ok) throw new Error('Failed to fetch portfolio settings');
-      return await response.json();
-    } catch (error) {
-       console.error("SETTINGS_FETCH_ERROR:", error);
        throw error;
     }
   },
 
   /**
-   * Updates global portfolio settings (Admin Only)
+   * Updates an existing project (Admin Only via RLS)
+   */
+  async updateProject(id, project) {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .update(project)
+        .eq('id', id)
+        .select();
+        
+      if (error) throw error;
+      return data[0];
+    } catch (error) {
+       throw error;
+    }
+  },
+
+  /**
+   * Deletes a project from the cloud database
+   */
+  async deleteProject(id) {
+    try {
+      const { error } = await supabase
+        .from('projects')
+        .delete()
+        .eq('id', id);
+        
+      if (error) throw error;
+      return true;
+    } catch (error) {
+        throw error;
+    }
+  },
+
+  /**
+   * Fetches global portfolio settings from the cloud
+   */
+  async getSettings() {
+    try {
+      const { data, error } = await supabase
+        .from('settings')
+        .select('*')
+        .eq('id', 1)
+        .single();
+        
+      if (error) throw error;
+      return data;
+    } catch (error) {
+       console.error("SUPABASE_SETTINGS_FETCH_ERROR:", error);
+       throw error;
+    }
+  },
+
+  /**
+   * Updates global portfolio settings (Admin Only via RLS)
    */
   async updateSettings(settings) {
     try {
-      const response = await fetch(`${API_BASE_URL}/settings`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(settings),
-      });
-      return await response.json();
+      const { data, error } = await supabase
+        .from('settings')
+        .update(settings)
+        .eq('id', 1)
+        .select();
+        
+      if (error) throw error;
+      return data[0];
     } catch (error) {
        throw error;
     }

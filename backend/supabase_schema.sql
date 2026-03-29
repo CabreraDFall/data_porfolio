@@ -1,0 +1,57 @@
+-- SUPABASE MASTER SCHEMA: Projects & Settings
+-- Execute this in the Supabase SQL Editor
+
+-- 1. Create Projects Table
+CREATE TABLE IF NOT EXISTS projects (
+  id TEXT PRIMARY KEY,
+  index TEXT,
+  title TEXT NOT NULL,
+  description TEXT,
+  role TEXT,
+  duration TEXT,
+  domain TEXT,
+  github_url TEXT,
+  github_highlight_url TEXT,
+  code_teaser TEXT,
+  mermaid_code TEXT,
+  tags JSONB DEFAULT '[]'::jsonb,
+  kpis JSONB DEFAULT '[]'::jsonb,
+  challenges JSONB DEFAULT '[]'::jsonb,
+  detailed_analysis JSONB DEFAULT '{"problem": "", "solution": "", "impact": ""}'::jsonb,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. Create Settings Table (Universal Configuration)
+CREATE TABLE IF NOT EXISTS settings (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT DEFAULT 'Abraham Cabrera',
+  role TEXT DEFAULT 'Data Architect',
+  browser_title TEXT DEFAULT 'Abraham Cabrera | Data Architect Portfolio',
+  hero_tagline TEXT DEFAULT 'Engineering high-throughput, fault-tolerant ecosystems that transform raw complexity into strategic intelligence.',
+  skills JSONB DEFAULT '["Python", "SQL", "Spark", "Airflow", "Snowflake", "DWH", "Streaming"]'::jsonb,
+  github_url TEXT DEFAULT 'https://github.com/AbrahamCabrera',
+  linkedin_url TEXT DEFAULT '#',
+  cv_url TEXT DEFAULT '#',
+  system_status TEXT DEFAULT 'Optimal',
+  footer_text TEXT DEFAULT '© 2026 Abraham Cabrera. Engineered for Precision.',
+  about_subtitle TEXT DEFAULT 'Código con propósito',
+  about_bio TEXT DEFAULT 'Creo que el mejor código es el que resuelve problemas reales sin añadir complejidad innecesaria...',
+  about_quote TEXT DEFAULT '"El único modo de hacer un gran trabajo es amar lo que haces."',
+  about_quote_author TEXT DEFAULT 'Steve Jobs',
+  about_image_url TEXT DEFAULT 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3387&auto=format&fit=crop',
+  expertise JSONB DEFAULT '[]'::jsonb,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. Initial Settings Insert
+INSERT INTO settings (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
+
+-- 4. Enable Row Level Security (RLS)
+ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE settings ENABLE ROW LEVEL SECURITY;
+
+-- 5. Public Access Policies (Read Only)
+CREATE POLICY "Enable read access for all users" ON projects FOR SELECT USING (true);
+CREATE POLICY "Enable read access for all users" ON settings FOR SELECT USING (true);
