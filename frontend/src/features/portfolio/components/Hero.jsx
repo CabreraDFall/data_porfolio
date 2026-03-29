@@ -24,9 +24,12 @@ const Hero = () => {
             <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">System Status: // ARCHITECT_MODE</span>
           </div>
           <div className="space-y-6">
-            <h1 className="text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_50px_rgba(88,245,209,0.1)]">
-              Data <span className="text-primary">Architect</span>
-            </h1>
+            <div className="space-y-2">
+              <span className="text-xl lg:text-2xl font-mono text-white/60 tracking-[0.2em] uppercase">Abraham Cabrera</span>
+              <h1 className="text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_50px_rgba(88,245,209,0.1)]">
+                Data <span className="text-primary">Architect</span>
+              </h1>
+            </div>
             <p className="text-lg lg:text-2xl font-light text-on-surface-variant max-w-2xl leading-relaxed border-l-2 border-primary/20 pl-8">
               Engineering high-throughput, fault-tolerant ecosystems that transform raw complexity into <span className="text-primary italic">strategic intelligence</span>.
             </p>
@@ -50,7 +53,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        
+
         {/* Hero Graphic */}
         <HeroGraphic />
       </div>
