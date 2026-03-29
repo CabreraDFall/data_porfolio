@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
+import Mermaid from '../../shared/components/Mermaid';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -23,6 +24,19 @@ const ProjectDetailPage = () => {
         { label: "Latency", legacyValue: "24h", newValue: "15min", type: "line" },
         { label: "Accuracy", legacyValue: "85%", newValue: "99.9%", type: "bar" }
       ],
+      mermaidCode: `
+        graph LR
+          subgraph Sources
+            S1[ERP System]
+            S2[CRM Hub]
+            S3[E-comm API]
+          end
+          Sources --> AF[Airflow Orchestrator]
+          AF --> SF_RAW[Snowflake RAW]
+          SF_RAW --> DBT[DBT Transformations]
+          DBT --> SF_GOLD[Snowflake Gold Layer]
+          SF_GOLD --> BI[Power BI / Analytics]
+      `,
       codeSnippet: "models: \n  - name: fct_orders\n    tests:\n      - dbt_expectations.expect_column_values_to_be_between:\n          column_name: order_date\n          min_value: '2020-01-01'\n          max_value: '2025-12-31'"
     },
     {
@@ -41,6 +55,16 @@ const ProjectDetailPage = () => {
         { label: "Latency Improvement (End-to-End)", legacyValue: "15 min", newValue: "500 ms", type: "line" },
         { label: "Throughput Capacity (Events/Sec)", legacyValue: "10k", newValue: "100k", type: "bar" }
       ],
+      mermaidCode: `
+        graph TD
+          UA[User Activity] --> |100k ev/s| KAFKA[Kafka Cluster]
+          KAFKA --> |Source Stream| FLINK[Flink Processing]
+          subgraph Flink Cluster
+            FLINK --> |Windowing| ST[State Manager]
+            ST --> |Low Latency| EN[Personalization Engine]
+          end
+          EN --> |Update Profile| DB[Real-time DB]
+      `,
       codeSnippet: "public class UserActivityProcessor extends KeyedProcessFunction<String, UserEvent, UserProfile> {\n    @Override\n    public void processElement(UserEvent event, Context ctx, Collector<UserProfile> out) {\n        ValueState<UserProfile> state = getRuntimeContext().getState(profileStateDescriptor);\n        UserProfile profile = state.value();\n        profile.update(event);\n        state.update(profile);\n        out.collect(profile);\n    }\n}"
     },
     {
@@ -59,6 +83,16 @@ const ProjectDetailPage = () => {
         { label: "Ingestion Speed", legacyValue: "4h", newValue: "15min", type: "line" },
         { label: "Manual Effort", legacyValue: "10h/week", newValue: "0h/week", type: "bar" }
       ],
+      mermaidCode: `
+        graph LR
+          BANK[Banking Portal] --> |SFTP/API| S3_IN[S3 Landing]
+          subgraph AWS Security
+            S3_IN --> GLUE[AWS Glue ETL]
+            GLUE --> |KMS/Masking| KMS[Secret Manager]
+          end
+          GLUE --> |Parquet| S3_CLEAN[S3 Clean Zone]
+          S3_CLEAN --> AUDIT[Audit Logging]
+      `,
       codeSnippet: "def mask_pii(df, columns):\n    for col in columns:\n        df = df.withColumn(col, sha2(df[col], 256))\n    return df\n\nfinancial_df = mask_pii(raw_df, ['account_number', 'customer_name'])"
     },
     {
@@ -77,6 +111,16 @@ const ProjectDetailPage = () => {
         { label: "Upstream Bugs", legacyValue: "45", newValue: "10", type: "line" },
         { label: "Time to Detect", legacyValue: "24h", newValue: "5min", type: "bar" }
       ],
+      mermaidCode: `
+        graph TD
+          PIPE[Existing Pipeline] --> |Check Point| GX[Great Expectations]
+          subgraph DQ Engine
+            GX --> |Validate JSON| JSON[JSON Schema]
+            JSON --> |Pass/Fail| RULES[Logic Rules]
+          end
+          RULES --> |Fail| SLACK[Slack Alert]
+          RULES --> |Pass| LOAD[Final Load]
+      `,
       codeSnippet: "checkpoint = context.get_checkpoint('orders_gold')\nresults = checkpoint.run(run_name='manual_test')\nif not results.success:\n    slack_client.chat_postMessage(channel='#alerts', text='DQ Fail: Orders')"
     }
   ];
@@ -136,41 +180,13 @@ const ProjectDetailPage = () => {
               </p>
             </div>
             
-            {/* Architecture Visualization SVG Composition */}
-            <div className="aspect-video w-full glass-panel rounded-3xl border border-white/10 overflow-hidden relative p-12 flex items-center justify-center">
+            {/* Architecture Visualization with Mermaid.js */}
+            <div className="w-full glass-panel rounded-3xl border border-white/10 overflow-hidden relative">
                <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#58f5d1_1px,transparent_1px)] [background-size:32px_32px]"></div>
-               <div className="relative w-full h-full flex items-center justify-between gap-8 max-w-3xl">
-                  {/* Step 1 Node */}
-                  <div className="flex flex-col items-center gap-4 group">
-                    <div className="w-24 h-24 rounded-2xl bg-surface-container-highest border border-primary/40 flex items-center justify-center text-primary group-hover:shadow-[0_0_30px_rgba(88,245,209,0.3)] transition-all">
-                      <span className="material-symbols-outlined text-4xl">database</span>
-                    </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-on-surface-variant">Source Node</span>
-                  </div>
-                  {/* Arrow 1 */}
-                  <div className="flex-grow h-px bg-gradient-to-r from-primary/40 to-tertiary/40 relative">
-                    <span className="absolute right-0 -top-1 material-symbols-outlined text-xs text-tertiary">chevron_right</span>
-                  </div>
-                  {/* Step 2 Node */}
-                  <div className="flex flex-col items-center gap-4 group">
-                    <div className="w-32 h-32 rounded-3xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                      <span className="material-symbols-outlined text-5xl animate-spin-slow">hub</span>
-                    </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-primary">CORE_COMPUTE</span>
-                  </div>
-                  {/* Arrow 2 */}
-                  <div className="flex-grow h-px bg-gradient-to-r from-tertiary/40 to-primary/40 relative">
-                    <span className="absolute right-0 -top-1 material-symbols-outlined text-xs text-primary">chevron_right</span>
-                  </div>
-                  {/* Step 3 Node */}
-                  <div className="flex flex-col items-center gap-4 group">
-                    <div className="w-24 h-24 rounded-2xl bg-surface-container-highest border border-tertiary/40 flex items-center justify-center text-tertiary">
-                      <span className="material-symbols-outlined text-4xl">cloud_done</span>
-                    </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-on-surface-variant">Destination</span>
-                  </div>
+               <div className="relative w-full min-h-[400px] flex items-center justify-center">
+                  <Mermaid chart={project.mermaidCode} />
                   <div className="absolute top-0 right-0 p-4">
-                    <div className="text-[8px] font-mono text-primary/40 uppercase tracking-widest">ARCHITECTURE_VISUALIZATION_CORE.SVG</div>
+                    <div className="text-[8px] font-mono text-primary/40 uppercase tracking-widest">ARCHITECTURE_VISUALIZATION_CORE.MERMAID</div>
                   </div>
                </div>
             </div>
