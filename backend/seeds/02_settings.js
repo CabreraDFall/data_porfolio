@@ -28,25 +28,25 @@ exports.seed = async function(knex) {
         {
           title: "Data Lakehouse",
           description: "Architecting unified storage & transformation layers on Snowflake/S3 for high-performance analytics.",
-          icon: "database_schema",
+          icon: "hub layers database",
           color: "from-primary/20",
         },
         {
           title: "Real-time Streaming",
           description: "Low-latency streaming pipelines with Kafka & Flink (100k+ events/sec).",
-          icon: "bolt",
+          icon: "bolt stream router",
           color: "from-secondary/20",
         },
         {
           title: "Automated DQ",
           description: "Shifting 'Quality to the Left' with integrated Great Expectations & custom CI/CD gates.",
-          icon: "verified",
+          icon: "verified_user rule inventory_2",
           color: "from-tertiary/20"
         },
         {
           title: "Cloud Native",
           description: "Infrastructure as Code and serverless processing on AWS (Glue, Lambda, KMS).",
-          icon: "cloud_done",
+          icon: "cloud_done settings_system_daydream terminal",
           color: "from-primary/20"
         }
       ])

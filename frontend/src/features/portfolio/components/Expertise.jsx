@@ -34,10 +34,10 @@ const Expertise = () => {
                         key={idx} 
                         className={`material-symbols-outlined transition-all duration-700 ${
                           domain.icon.split(' ').length > 1 
-                            ? `absolute text-xl ${
-                                idx === 0 ? 'translate-x-[-20%] translate-y-[-20%] opacity-40 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0' :
-                                idx === 1 ? 'translate-x-[20%] translate-y-[20%] opacity-20 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 delay-75' :
-                                'z-10 text-2xl group-hover:scale-110'
+                            ? `absolute ${
+                                idx === 0 ? 'text-2xl -translate-x-3 -translate-y-2 opacity-30 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 blur-[1px] group-hover:blur-0 rotate-[-10deg] group-hover:rotate-0' :
+                                idx === 1 ? 'text-2xl translate-x-3 translate-y-2 opacity-20 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 delay-75 blur-[2px] group-hover:blur-0 rotate-[10deg] group-hover:rotate-0' :
+                                'z-10 text-3xl group-hover:scale-110 drop-shadow-2xl'
                               }` 
                             : 'text-3xl'
                         }`}
