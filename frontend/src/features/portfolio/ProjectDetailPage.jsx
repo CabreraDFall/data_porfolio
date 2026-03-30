@@ -70,7 +70,7 @@ const ProjectDetailPage = () => {
       <nav className="flex items-center justify-between p-4 md:p-6 max-w-[1440px] mx-auto border-b border-white/5 bg-background/80 backdrop-blur-xl sticky top-0 z-50">
         <button 
           onClick={() => navigate('/')}
-          className="group flex items-center gap-2 text-[10px] font-mono text-on-surface-variant hover:text-primary transition-all uppercase tracking-widest"
+          className="group flex items-center gap-2 text-[11px] md:text-sm font-mono text-on-surface-variant hover:text-primary transition-all uppercase tracking-widest"
         >
           <span className="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
           <span className="hidden xs:inline">Back to Hub</span>
@@ -101,7 +101,7 @@ const ProjectDetailPage = () => {
                 <h1 className="text-4xl sm:text-6xl lg:text-8xl font-headline font-bold tracking-tighter text-on-surface leading-[0.95] drop-shadow-[0_0_40px_rgba(88,245,209,0.2)]">
                 {project.title}
                 </h1>
-                <p className="text-lg lg:text-2xl font-light text-on-surface-variant leading-relaxed max-w-3xl border-l border-primary/30 pl-6 lg:pl-8">
+                <p className="text-sm lg:text-base font-light text-on-surface-variant leading-relaxed max-w-3xl border-l border-primary/30 pl-6 lg:pl-8">
                     {project.description}
                 </p>
             </div>
@@ -142,7 +142,7 @@ const ProjectDetailPage = () => {
                 <section className="space-y-8 lg:space-y-12">
                     <div className="space-y-4">
                         <h3 className="text-xs font-mono text-primary uppercase tracking-[0.4em]">Section 01 / The Challenge</h3>
-                        <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant first-letter:text-5xl lg:first-letter:text-7xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-4 first-letter:mt-1">
+                        <p className="text-sm lg:text-base leading-relaxed font-light text-on-surface-variant first-letter:text-5xl lg:first-letter:text-7xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-4 first-letter:mt-1">
                             {project.detailed_analysis.problem}
                         </p>
                     </div>
@@ -151,7 +151,7 @@ const ProjectDetailPage = () => {
                 <section className="space-y-8 lg:space-y-12">
                     <div className="space-y-4">
                         <h3 className="text-xs font-mono text-primary uppercase tracking-[0.4em]">Section 02 / Advanced implementation</h3>
-                        <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant">
+                        <p className="text-sm lg:text-base leading-relaxed font-light text-on-surface-variant">
                             {project.detailed_analysis.solution}
                         </p>
                         {/* Logic Spotlight */}
@@ -179,7 +179,7 @@ const ProjectDetailPage = () => {
                 <section className="space-y-6 lg:space-y-12">
                     <div className="space-y-4">
                         <h3 className="text-xs font-mono text-primary uppercase tracking-[0.4em]">Section 03 / Strategic Impact</h3>
-                        <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant italic border-l-2 lg:border-l-4 border-primary/40 pl-6 lg:pl-12 bg-primary/5 py-5 lg:py-8 rounded-r-2xl lg:rounded-r-3xl">
+                        <p className="text-sm lg:text-base leading-relaxed font-light text-on-surface-variant italic border-l-2 lg:border-l-4 border-primary/40 pl-6 lg:pl-12 bg-primary/5 py-5 lg:py-8 rounded-r-2xl lg:rounded-r-3xl">
                                 "{project.detailed_analysis.impact}"
                         </p>
                     </div>
@@ -223,10 +223,10 @@ const ProjectDetailPage = () => {
                             {project.challenges.map((item, i) => (
                                 <div key={i} className="p-6 glass-panel rounded-2xl border border-white/5 hover:border-primary/20 transition-all group">
                                     <div className="flex gap-4 items-start">
-                                        <span className="material-symbols-outlined text-primary opacity-60 group-hover:opacity-100 transition-opacity">{item.icon}</span>
+                                        <span className="material-symbols-outlined text-primary opacity-60 group-hover:opacity-100 transition-opacity text-2xl">{item.icon}</span>
                                         <div className="space-y-1">
-                                            <div className="text-[10px] font-mono text-on-surface-variant uppercase">{item.challenge}</div>
-                                            <div className="text-xs font-light text-on-surface/80">{item.solution}</div>
+                                            <div className="text-xs font-mono text-on-surface-variant uppercase tracking-wider">{item.challenge}</div>
+                                            <div className="text-sm md:text-base font-light text-on-surface/80">{item.solution}</div>
                                         </div>
                                     </div>
                                 </div>
