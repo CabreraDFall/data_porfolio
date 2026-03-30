@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cmsService } from '../../shared/services/cmsService';
 import { useAuth } from '../auth/AuthContext';
+import { useToast } from '../../shared/contexts/ToastContext';
 
 const AdminDashboard = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const { signOut } = useAuth();
+    const { showToast } = useToast();
 
     useEffect(() => {
         fetchProjects();
@@ -34,9 +36,10 @@ const AdminDashboard = () => {
             try {
                 // To be implemented in cmsService
                 await cmsService.deleteProject(id);
+                showToast("Architecture decommissioned successfully", "success");
                 fetchProjects();
             } catch (error) {
-                alert("Deletion failed");
+                showToast("Deletion failed: " + (error.message || "Unknown error"), "error");
             }
         }
     };

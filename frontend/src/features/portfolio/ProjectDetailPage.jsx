@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Mermaid from '../../shared/components/Mermaid';
 import { cmsService } from '../../shared/services/cmsService';
 import { ProjectDetailSkeleton } from '../../shared/components/Skeleton';
+import SEO from '../../shared/components/SEO';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -60,6 +61,11 @@ const ProjectDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-on-background selection:bg-primary/30">
+      <SEO 
+        title={project.title} 
+        description={project.description} 
+        keywords={`${project.title}, ${project.domain}, ${project.tags.join(', ')}`} 
+      />
       {/* Premium Header */}
       <nav className="flex items-center justify-between p-6 max-w-[1440px] mx-auto border-b border-white/5 bg-background/50 backdrop-blur-xl sticky top-0 z-50">
         <button 
