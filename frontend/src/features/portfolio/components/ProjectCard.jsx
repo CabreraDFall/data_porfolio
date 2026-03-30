@@ -8,29 +8,29 @@ const ProjectCard = ({ index, domain, title, description, tags, onViewDeepDive }
           <span className="text-primary mr-1">#{index}</span> / {domain}
         </div>
       </div>
-      
+
       <h3 className="text-2xl font-headline font-bold text-on-surface mb-4 leading-tight group-hover:text-primary transition-colors">
         {title}
       </h3>
-      
+
       <p className="text-on-surface-variant font-light text-sm leading-relaxed mb-8 flex-grow">
         {description}
       </p>
-      
+
       <div className="flex flex-wrap gap-2 mb-8">
         {tags.map((tag) => (
-          <span 
-            key={tag} 
+          <span
+            key={tag}
             className="px-2 py-1 rounded bg-surface-container-highest border border-outline-variant/20 text-[10px] font-mono text-on-surface-variant"
           >
             {tag}
           </span>
         ))}
       </div>
-      
-      <button 
+
+      <button
         onClick={onViewDeepDive}
-        className="self-start px-6 py-2 border border-outline-variant/20 text-[10px] font-mono uppercase tracking-widest text-on-surface-variant hover:text-primary hover:border-primary/40 transition-all active:scale-95"
+        className="self-start px-6 py-2 border border-outline-variant/20 text-[10px] text-primary font-mono uppercase tracking-widest text-on-surface-variant hover:text-primary hover:border-primary/40 transition-all active:scale-95"
       >
         View Deep Dive
       </button>
