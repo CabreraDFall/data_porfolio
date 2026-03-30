@@ -197,9 +197,8 @@ const ProjectDetailPage = () => {
                                 <span className="material-symbols-outlined text-lg lg:text-xl group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
                             </a>
                         </div>
-                    </div>
-                </section>
-            </div>
+                    </section>
+                </div>
 
             {/* Structured Sidebar for Recruiter Scannability */}
             <aside className="lg:col-span-4 space-y-8 lg:space-y-12">

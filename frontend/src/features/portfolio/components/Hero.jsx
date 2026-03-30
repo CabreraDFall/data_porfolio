@@ -6,7 +6,7 @@ const Hero = () => {
   const { config } = useConfig();
 
   return (
-    <section id="hero" className="relative min-h-[600px] md:min-h-screen flex items-start md:items-center overflow-hidden px-5 sm:px-10 lg:px-20 pt-20 sm:pt-28 md:pt-0">
+    <section id="hero" className="relative min-h-0 flex items-start overflow-hidden px-5 sm:px-10 lg:px-20 pt-20 sm:pt-28 md:pt-40 pb-20 lg:pb-32">
       {/* Background Visuals */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-surface via-surface-container-lowest to-surface"></div>
