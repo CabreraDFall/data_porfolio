@@ -37,7 +37,7 @@ const Projects = () => {
   }
 
   return (
-    <section className="py-24 px-6 lg:px-20 bg-surface" id="projects">
+    <section className="py-12 md:py-24 px-6 lg:px-20 bg-surface" id="projects">
       <div className="max-w-[1440px] mx-auto">
         {/* Header Section */}
         <div className="flex justify-between items-baseline mb-16 border-b border-outline-variant/10 pb-6">

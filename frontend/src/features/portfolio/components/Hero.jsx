@@ -6,7 +6,7 @@ const Hero = () => {
   const { config } = useConfig();
 
   return (
-    <section id="hero" className="relative min-h-[920px] flex items-center overflow-hidden px-6 lg:px-20">
+    <section id="hero" className="relative min-h-[700px] md:min-h-screen flex items-center overflow-hidden px-6 lg:px-20">
       {/* Background Visuals */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-surface via-surface-container-lowest to-surface"></div>
@@ -27,7 +27,7 @@ const Hero = () => {
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-xl lg:text-2xl font-mono text-white/60 tracking-[0.2em] uppercase">{config.name}</span>
-              <h1 className="text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_50px_rgba(88,245,209,0.1)]">
+              <h1 className="text-4xl md:text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_50px_rgba(88,245,209,0.1)]">
                 {config.role.split(' ')[0]} <span className="text-primary">{config.role.split(' ').slice(1).join(' ')}</span>
               </h1>
             </div>
@@ -42,12 +42,12 @@ const Hero = () => {
               </span>
             ))}
           </div>
-          <div className="flex items-center gap-8 pt-8">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-8 pt-8">
             <a 
               href={config.cv_url} 
               target="_blank" 
               rel="noreferrer"
-              className="group relative px-10 py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase tracking-widest rounded-xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 flex items-center gap-3 overflow-hidden"
+              className="group relative px-10 py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase tracking-widest rounded-xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               <span className="material-symbols-outlined group-hover:rotate-12 transition-transform text-xl">download</span>

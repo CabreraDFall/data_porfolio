@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useConfig } from '../../../shared/context/ConfigContext';
 import { Link, useLocation } from 'react-router-dom';
+import MobileMenu from './MobileMenu';
 
 const Navbar = () => {
     const { config } = useConfig();
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -14,6 +16,15 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Effect to handle body scroll lock when menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isMenuOpen]);
 
     const navItems = [
         { label: "Home", href: "/" },
@@ -41,7 +52,8 @@ const Navbar = () => {
                 </Link>
 
                 {/* Navigation (Right) */}
-                <div className="flex items-center gap-2 md:gap-8">
+                <div className="flex items-center gap-4 md:gap-8">
+                    {/* Desktop Menu */}
                     <ul className="hidden md:flex items-center gap-1">
                         {navItems.map((item) => (
                             <li key={item.label}>
@@ -64,15 +76,32 @@ const Navbar = () => {
                         ))}
                     </ul>
 
-                    {/* Admin/CMS Entry (Optional visual element) */}
+                    {/* Mobile Menu Trigger */}
+                    <button 
+                        onClick={() => setIsMenuOpen(true)}
+                        className="md:hidden w-10 h-10 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-on-surface/60 hover:text-primary hover:border-primary/20 transition-all active:scale-90"
+                        aria-label="Open menu"
+                    >
+                        <span className="material-symbols-outlined text-xl">menu</span>
+                    </button>
+
+                    {/* Admin/CMS Entry */}
                     <Link 
                         to="/admin" 
-                        className="w-10 h-10 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-white/20 hover:text-primary hover:border-primary/40 transition-all group"
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-white/20 hover:text-primary hover:border-primary/40 transition-all group"
                     >
-                        <span className="material-symbols-outlined text-sm group-hover:scale-110 transition-transform">terminal</span>
+                        <span className="material-symbols-outlined text-sm md:text-base group-hover:scale-110 transition-transform">terminal</span>
                     </Link>
                 </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            <MobileMenu 
+                isOpen={isMenuOpen} 
+                onClose={() => setIsMenuOpen(false)}
+                navItems={navItems}
+                isHomePage={isHomePage}
+            />
         </nav>
     );
 };

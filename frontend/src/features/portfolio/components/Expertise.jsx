@@ -6,9 +6,9 @@ const Expertise = () => {
   const domains = config.expertise || [];
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-surface/50">
+    <section className="py-12 md:py-24 px-6 lg:px-12 bg-surface/50">
       <div className="max-w-[1440px] mx-auto space-y-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-6">
           <div className="space-y-4">
             <h4 className="text-xs font-mono uppercase tracking-[0.4em] text-primary">Core Competencies</h4>
             <h2 className="text-3xl lg:text-5xl font-headline font-bold text-on-surface tracking-tighter leading-none">
