@@ -98,7 +98,7 @@ const ProjectDetailPage = () => {
         <div className="space-y-6 lg:space-y-12">
           <div className="space-y-6 lg:space-y-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <div className="space-y-4 lg:space-y-6">
-                <h1 className="text-4xl sm:text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_40px_rgba(88,245,209,0.2)]">
+                <h1 className="text-4xl sm:text-6xl lg:text-8xl font-headline font-bold tracking-tighter text-on-surface leading-[0.95] drop-shadow-[0_0_40px_rgba(88,245,209,0.2)]">
                 {project.title}
                 </h1>
                 <p className="text-lg lg:text-2xl font-light text-on-surface-variant leading-relaxed max-w-3xl border-l border-primary/30 pl-6 lg:pl-8">
@@ -106,16 +106,16 @@ const ProjectDetailPage = () => {
                 </p>
             </div>
             {/* KPI Performance Box */}
-            <div className="glass-panel p-6 lg:p-8 rounded-3xl border border-primary/20 bg-primary/5 min-w-[280px] lg:min-w-[320px] space-y-6 shadow-[0_0_50px_rgba(88,245,209,0.05)]">
-                <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary border-b border-primary/10 pb-4">Verified Project Impact</h4>
+            <div className="glass-panel p-6 lg:p-10 rounded-3xl border border-primary/20 bg-primary/5 min-w-[280px] lg:min-w-[350px] space-y-8 shadow-[0_0_50px_rgba(88,245,209,0.05)]">
+                <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-primary border-b border-primary/10 pb-4">Verified Project Impact</h4>
                 <div className="grid grid-cols-1 gap-6">
                     {project.kpis.map((kpi, i) => (
                         <div key={i} className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <span className="material-symbols-outlined text-primary text-xl opacity-60">{kpi.icon}</span>
-                                <span className="text-xs text-on-surface-variant font-mono uppercase tracking-wider">{kpi.label}</span>
+                                <span className="text-sm text-on-surface-variant font-mono uppercase tracking-wider">{kpi.label}</span>
                             </div>
-                            <span className="text-2xl font-headline font-bold text-white">{kpi.value}</span>
+                            <span className="text-3xl font-headline font-bold text-white">{kpi.value}</span>
                         </div>
                     ))}
                 </div>
@@ -141,7 +141,7 @@ const ProjectDetailPage = () => {
                 {/* The Narrative */}
                 <section className="space-y-8 lg:space-y-12">
                     <div className="space-y-4">
-                        <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 01 / The Challenge</h3>
+                        <h3 className="text-xs font-mono text-primary uppercase tracking-[0.4em]">Section 01 / The Challenge</h3>
                         <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant first-letter:text-5xl lg:first-letter:text-7xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-4 first-letter:mt-1">
                             {project.detailed_analysis.problem}
                         </p>
@@ -150,7 +150,7 @@ const ProjectDetailPage = () => {
 
                 <section className="space-y-8 lg:space-y-12">
                     <div className="space-y-4">
-                        <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 02 / Advanced implementation</h3>
+                        <h3 className="text-xs font-mono text-primary uppercase tracking-[0.4em]">Section 02 / Advanced implementation</h3>
                         <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant">
                             {project.detailed_analysis.solution}
                         </p>
@@ -178,7 +178,7 @@ const ProjectDetailPage = () => {
 
                 <section className="space-y-6 lg:space-y-12">
                     <div className="space-y-4">
-                        <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 03 / Strategic Impact</h3>
+                        <h3 className="text-xs font-mono text-primary uppercase tracking-[0.4em]">Section 03 / Strategic Impact</h3>
                         <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant italic border-l-2 lg:border-l-4 border-primary/40 pl-6 lg:pl-12 bg-primary/5 py-5 lg:py-8 rounded-r-2xl lg:rounded-r-3xl">
                                 "{project.detailed_analysis.impact}"
                         </p>
@@ -204,21 +204,21 @@ const ProjectDetailPage = () => {
             <aside className="lg:col-span-4 space-y-8 lg:space-y-12">
                 <div className="sticky top-32 space-y-8 lg:space-y-12">
                     {/* Role & Period */}
-                    <div className="p-6 lg:p-8 glass-panel rounded-2xl lg:rounded-3xl border border-white/5 bg-surface-container-lowest/20 space-y-3 lg:space-y-6">
-                        <div className="space-y-1 lg:space-y-2">
-                             <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Candidate Role</div>
-                             <div className="text-lg lg:text-xl font-headline font-bold text-on-surface">{project.role}</div>
+                    <div className="p-6 lg:p-10 glass-panel rounded-2xl lg:rounded-3xl border border-white/5 bg-surface-container-lowest/20 space-y-4 lg:space-y-8">
+                        <div className="space-y-1 lg:space-y-3">
+                             <div className="text-[11px] font-mono text-white/40 uppercase tracking-widest">Candidate Role</div>
+                             <div className="text-xl lg:text-2xl font-headline font-bold text-on-surface">{project.role}</div>
                         </div>
                         <div className="w-full h-px bg-white/5"></div>
-                        <div className="space-y-1 lg:space-y-2">
-                             <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Project Period</div>
-                             <div className="text-lg lg:text-xl font-headline font-bold text-on-surface">{project.duration}</div>
+                        <div className="space-y-1 lg:space-y-3">
+                             <div className="text-[11px] font-mono text-white/40 uppercase tracking-widest">Project Period</div>
+                             <div className="text-xl lg:text-2xl font-headline font-bold text-on-surface">{project.duration}</div>
                         </div>
                     </div>
 
                     {/* Summary of Technical Challenges */}
                     <div className="space-y-6">
-                        <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">Technical Hardships</h4>
+                        <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-primary">Technical Hardships</h4>
                         <div className="space-y-4">
                             {project.challenges.map((item, i) => (
                                 <div key={i} className="p-6 glass-panel rounded-2xl border border-white/5 hover:border-primary/20 transition-all group">
