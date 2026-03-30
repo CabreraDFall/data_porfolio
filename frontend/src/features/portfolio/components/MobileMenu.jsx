@@ -7,16 +7,16 @@ const MobileMenu = ({ isOpen, onClose, navItems, isHomePage }) => {
   return (
     <div className="fixed inset-0 z-[500] md:hidden overflow-hidden">
       {/* Backdrop with extreme blur and dark tint */}
-      <div 
+      <div
         className="absolute inset-0 bg-surface/40 backdrop-blur-3xl"
         onClick={onClose}
       />
-      
+
       {/* Mobile Menu Content Container */}
       <div className="relative h-full w-full flex flex-col justify-center px-8 sm:px-12 py-16 animate-in slide-in-from-right duration-700 ease-out">
-        
+
         {/* Close Button at Top Right */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-10 right-10 w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 text-primary hover:bg-primary/10 hover:border-primary/20 transition-all active:scale-90"
           aria-label="Close menu"
@@ -59,27 +59,31 @@ const MobileMenu = ({ isOpen, onClose, navItems, isHomePage }) => {
 
         {/* Bottom Metadata / Links Section */}
         <div className="mt-auto pt-12 border-t border-white/5 flex flex-col space-y-6 animate-in fade-in duration-1000 delay-500">
-           <div>
-             <p className="text-[8px] font-mono text-primary/60 uppercase tracking-[0.5em] mb-4">Core Systems</p>
-             <div className="flex flex-wrap gap-4">
-                <span className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-wider px-3 py-1 rounded bg-white/2 border border-white/5">Architecture</span>
-                <span className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-wider px-3 py-1 rounded bg-white/2 border border-white/5">Analytics</span>
-             </div>
-           </div>
-           
-           <div className="flex items-center justify-between">
-              <div className="flex gap-4">
-                 <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 text-white/40 hover:text-primary hover:border-primary/20 transition-all cursor-pointer">
-                   <span className="material-symbols-outlined text-sm">terminal</span>
-                 </span>
-                 <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 text-white/40 hover:text-primary hover:border-primary/20 transition-all cursor-pointer">
-                   <span className="material-symbols-outlined text-sm">share</span>
-                 </span>
-              </div>
-              <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">
-                v2.0.4.build_2026
+          <div>
+            <p className="text-[8px] font-mono text-primary/60 uppercase tracking-[0.5em] mb-4">Core Systems</p>
+            <div className="flex flex-wrap gap-4">
+              <span className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-wider px-3 py-1 rounded bg-white/2 border border-white/5">Architecture</span>
+              <span className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-wider px-3 py-1 rounded bg-white/2 border border-white/5">Analytics</span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex gap-4">
+              <Link
+                to="/admin"
+                onClick={onClose}
+                className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 text-white/40 hover:text-primary hover:border-primary/20 transition-all active:scale-90"
+              >
+                <span className="material-symbols-outlined text-sm">terminal</span>
+              </Link>
+              <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 text-white/40 hover:text-primary hover:border-primary/20 transition-all cursor-pointer">
+                <span className="material-symbols-outlined text-sm">share</span>
               </span>
-           </div>
+            </div>
+            <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">
+              v2.0.4.build_2026
+            </span>
+          </div>
         </div>
       </div>
     </div>

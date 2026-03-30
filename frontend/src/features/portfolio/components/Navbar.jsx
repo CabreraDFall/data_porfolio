@@ -37,8 +37,8 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 border-b px-6 lg:px-20
-            ${isScrolled 
-                ? 'bg-background/80 backdrop-blur-xl border-white/5 py-3 md:py-4' 
+            ${isScrolled
+                ? 'bg-background/80 backdrop-blur-xl border-white/5 py-3 md:py-4'
                 : 'bg-transparent border-transparent py-5 md:py-8'}`}>
             <div className="max-w-[1440px] mx-auto flex items-center justify-between">
                 {/* Brand / Title (Left) */}
@@ -58,14 +58,14 @@ const Navbar = () => {
                         {navItems.map((item) => (
                             <li key={item.label}>
                                 {isHomePage ? (
-                                    <a 
+                                    <a
                                         href={item.href}
                                         className="px-4 py-2 rounded-lg text-[10px] font-mono uppercase tracking-widest text-on-surface-variant hover:text-white hover:bg-white/5 transition-all"
                                     >
                                         {item.label}
                                     </a>
                                 ) : (
-                                    <Link 
+                                    <Link
                                         to={item.href}
                                         className="px-4 py-2 rounded-lg text-[10px] font-mono uppercase tracking-widest text-on-surface-variant hover:text-white hover:bg-white/5 transition-all"
                                     >
@@ -77,7 +77,7 @@ const Navbar = () => {
                     </ul>
 
                     {/* Mobile Menu Trigger */}
-                    <button 
+                    <button
                         onClick={() => setIsMenuOpen(true)}
                         className="md:hidden w-10 h-10 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-on-surface/60 hover:text-primary hover:border-primary/20 transition-all active:scale-90"
                         aria-label="Open menu"
@@ -86,9 +86,9 @@ const Navbar = () => {
                     </button>
 
                     {/* Admin/CMS Entry */}
-                    <Link 
-                        to="/admin" 
-                        className="w-10 h-10 md:w-12 md:h-12 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-white/20 hover:text-primary hover:border-primary/40 transition-all group"
+                    <Link
+                        to="/admin"
+                        className="hidden md:flex w-10 h-10 md:w-12 md:h-12 rounded-xl border border-white/5 bg-white/2 items-center justify-center text-white/20 hover:text-primary hover:border-primary/40 transition-all group"
                     >
                         <span className="material-symbols-outlined text-sm md:text-base group-hover:scale-110 transition-transform">terminal</span>
                     </Link>
@@ -96,8 +96,8 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <MobileMenu 
-                isOpen={isMenuOpen} 
+            <MobileMenu
+                isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
                 navItems={navItems}
                 isHomePage={isHomePage}
