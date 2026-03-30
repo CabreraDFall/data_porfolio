@@ -93,11 +93,11 @@ const ProjectDetailPage = () => {
         </div>
       </nav>
 
-      <main className="max-w-[1440px] mx-auto p-5 md:p-8 lg:p-12 space-y-12 lg:space-y-24">
+      <main className="max-w-[1440px] mx-auto p-5 md:p-8 lg:p-12 space-y-8 lg:space-y-24">
         {/* Project Header & KPI Box */}
-        <div className="space-y-8 lg:space-y-12">
-          <div className="space-y-8 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-            <div className="space-y-6">
+        <div className="space-y-6 lg:space-y-12">
+          <div className="space-y-6 lg:space-y-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div className="space-y-4 lg:space-y-6">
                 <h1 className="text-4xl sm:text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_40px_rgba(88,245,209,0.2)]">
                 {project.title}
                 </h1>
@@ -125,7 +125,7 @@ const ProjectDetailPage = () => {
           {/* Main Visualization Container */}
           <div className="w-full glass-panel rounded-[1.5rem] lg:rounded-[2rem] border border-white/10 overflow-hidden relative">
              <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#58f5d1_1px,transparent_1px)] [background-size:32px_32px]"></div>
-             <div className="relative w-full min-h-[300px] lg:min-h-[500px] flex items-center justify-center p-4 sm:p-8 lg:p-16">
+             <div className="relative w-full min-h-[auto] lg:min-h-[500px] flex items-center justify-center p-4 sm:p-8 lg:p-16">
                 <Mermaid chart={project.mermaid_code} />
                 <div className="absolute top-0 right-0 p-4 lg:p-6 flex flex-col items-end gap-1 lg:gap-2">
                     <span className="text-[8px] lg:text-[10px] font-mono text-primary/40 uppercase tracking-[.4em]">ARCHITECTURE_LOGIC.FLOW</span>
@@ -136,8 +136,8 @@ const ProjectDetailPage = () => {
         </div>
 
         {/* Structured In-Depth Analysis */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
-            <div className="lg:col-span-8 space-y-16">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-24">
+            <div className="lg:col-span-8 space-y-10 lg:space-y-16">
                 {/* The Narrative */}
                 <section className="space-y-8 lg:space-y-12">
                     <div className="space-y-4">
@@ -176,14 +176,13 @@ const ProjectDetailPage = () => {
                     </div>
                 </section>
 
-                <section className="space-y-8 lg:space-y-12">
-                    <div className="space-y-8">
-                        <div className="space-y-4">
-                            <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 03 / Strategic Impact</h3>
-                            <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant italic border-l-2 lg:border-l-4 border-primary/40 pl-6 lg:pl-12 bg-primary/5 py-6 lg:py-8 rounded-r-2xl lg:rounded-r-3xl">
+                <section className="space-y-6 lg:space-y-12">
+                    <div className="space-y-4">
+                        <h3 className="text-[10px] font-mono text-primary uppercase tracking-[0.4em]">Section 03 / Strategic Impact</h3>
+                        <p className="text-lg lg:text-2xl leading-relaxed font-light text-on-surface-variant italic border-l-2 lg:border-l-4 border-primary/40 pl-6 lg:pl-12 bg-primary/5 py-5 lg:py-8 rounded-r-2xl lg:rounded-r-3xl">
                                 "{project.detailed_analysis.impact}"
-                            </p>
-                        </div>
+                        </p>
+                    </div>
                         {/* Final GitHub Engagement Button */}
                         <div className="pt-4 lg:pt-8">
                             <a 
@@ -203,10 +202,10 @@ const ProjectDetailPage = () => {
             </div>
 
             {/* Structured Sidebar for Recruiter Scannability */}
-            <aside className="lg:col-span-4 space-y-12">
-                <div className="sticky top-32 space-y-12">
+            <aside className="lg:col-span-4 space-y-8 lg:space-y-12">
+                <div className="sticky top-32 space-y-8 lg:space-y-12">
                     {/* Role & Period */}
-                    <div className="p-6 lg:p-8 glass-panel rounded-2xl lg:rounded-3xl border border-white/5 bg-surface-container-lowest/20 space-y-4 lg:space-y-6">
+                    <div className="p-6 lg:p-8 glass-panel rounded-2xl lg:rounded-3xl border border-white/5 bg-surface-container-lowest/20 space-y-3 lg:space-y-6">
                         <div className="space-y-1 lg:space-y-2">
                              <div className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Candidate Role</div>
                              <div className="text-lg lg:text-xl font-headline font-bold text-on-surface">{project.role}</div>
