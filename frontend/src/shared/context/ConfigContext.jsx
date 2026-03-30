@@ -6,8 +6,8 @@ const ConfigContext = createContext();
 export const ConfigProvider = ({ children }) => {
   const [config, setConfig] = useState({
     name: 'Abraham Cabrera',
-    role: 'Data Architect',
-    browser_title: 'Abraham Cabrera | Data Architect Portfolio',
+    role: 'Data Engineer',
+    browser_title: 'Abraham Cabrera | Data Engineer Portfolio',
     hero_tagline: 'Engineering high-throughput, fault-tolerant ecosystems that transform raw complexity into strategic intelligence.',
     about_subtitle: 'Código con propósito',
     about_bio: '',
