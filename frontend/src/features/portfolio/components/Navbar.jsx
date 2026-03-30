@@ -38,8 +38,8 @@ const Navbar = () => {
     return (
         <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 border-b px-6 lg:px-20
             ${isScrolled 
-                ? 'bg-background/80 backdrop-blur-xl border-white/5 py-4' 
-                : 'bg-transparent border-transparent py-8'}`}>
+                ? 'bg-background/80 backdrop-blur-xl border-white/5 py-3 md:py-4' 
+                : 'bg-transparent border-transparent py-5 md:py-8'}`}>
             <div className="max-w-[1440px] mx-auto flex items-center justify-between">
                 {/* Brand / Title (Left) */}
                 <Link to="/" className="flex flex-col group">

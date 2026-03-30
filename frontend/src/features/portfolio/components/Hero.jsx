@@ -6,7 +6,7 @@ const Hero = () => {
   const { config } = useConfig();
 
   return (
-    <section id="hero" className="relative min-h-[700px] md:min-h-screen flex items-center overflow-hidden px-6 lg:px-20">
+    <section id="hero" className="relative min-h-[700px] md:min-h-screen flex items-start md:items-center overflow-hidden px-6 lg:px-20 pt-32 md:pt-0">
       {/* Background Visuals */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-surface via-surface-container-lowest to-surface"></div>
@@ -22,11 +22,11 @@ const Hero = () => {
         <div className="space-y-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high border border-primary/20 backdrop-blur-xl">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary">System Status: // {config.system_status}</span>
+            <span className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary">System Status: // {config.system_status}</span>
           </div>
           <div className="space-y-6">
             <div className="space-y-2">
-              <span className="text-xl lg:text-2xl font-mono text-white/60 tracking-[0.2em] uppercase">{config.name}</span>
+              <span className="text-lg md:text-xl lg:text-2xl font-mono text-white/60 tracking-[0.2em] uppercase">{config.name}</span>
               <h1 className="text-4xl md:text-6xl lg:text-9xl font-headline font-bold tracking-tighter text-on-surface leading-[0.85] drop-shadow-[0_0_50px_rgba(88,245,209,0.1)]">
                 {config.role.split(' ')[0]} <span className="text-primary">{config.role.split(' ').slice(1).join(' ')}</span>
               </h1>
