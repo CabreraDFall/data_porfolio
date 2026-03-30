@@ -21,7 +21,7 @@ const AboutMe = () => {
             {/* Floating Badge */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
               <div className="px-6 py-2 glass-panel rounded-full border border-primary/30 text-primary font-mono text-xs uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(88,245,209,0.2)]">
-                {config.role}
+                {config.name}
               </div>
             </div>
           </div>

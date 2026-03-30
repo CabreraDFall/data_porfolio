@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { cmsService } from '../../shared/services/cmsService';
 import { useToast } from '../../shared/contexts/ToastContext';
+import { slugify } from '../../shared/utils/slugify';
 
 // Modular Components
 import MetadataSection from './components/form/MetadataSection';
@@ -43,6 +44,16 @@ const ProjectForm = () => {
             });
         }
     }, [id]);
+
+    // Auto-generate slug from title
+    useEffect(() => {
+        // Only auto-generate if we are creating a new project
+        // or if the current id is already a slugified version of the title (meaning it's in sync)
+        const currentSlug = slugify(project.title);
+        if (!id && project.title) {
+            setProject(prev => ({ ...prev, id: currentSlug }));
+        }
+    }, [project.title, id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

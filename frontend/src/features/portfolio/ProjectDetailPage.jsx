@@ -115,7 +115,7 @@ const ProjectDetailPage = () => {
                                 <span className="material-symbols-outlined text-primary text-lg opacity-40 group-hover/kpi:opacity-100 transition-opacity">{kpi.icon}</span>
                                 <span className="text-[10px] text-on-surface-variant font-mono uppercase tracking-[0.2em]">{kpi.label}</span>
                             </div>
-                            <span className="text-3xl lg:text-4xl font-headline font-bold text-white tracking-tight leading-none">
+                            <span className="text-xl lg:text-2xl font-headline font-bold text-white tracking-tight leading-none group-hover/kpi:text-primary transition-colors">
                                 {kpi.value}
                             </span>
                         </div>
