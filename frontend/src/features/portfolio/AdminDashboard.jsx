@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cmsService } from '../../shared/services/cmsService';
+import { useAuth } from '../auth/AuthContext';
 
 const AdminDashboard = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const { signOut } = useAuth();
 
     useEffect(() => {
         fetchProjects();
@@ -20,6 +22,11 @@ const AdminDashboard = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleLogout = async () => {
+        await signOut();
+        navigate('/');
     };
 
     const handleDelete = async (id) => {
@@ -43,6 +50,13 @@ const AdminDashboard = () => {
                         <p className="text-on-surface-variant font-mono text-xs uppercase tracking-widest text-primary">System: // ACTIVE_MANAGEMENT</p>
                     </div>
                     <div className="flex gap-4">
+                        <button 
+                            onClick={handleLogout}
+                            className="px-6 py-3 border border-red-500/20 text-red-400 font-mono text-[10px] uppercase tracking-widest rounded-xl hover:bg-red-500/5 transition-all flex items-center gap-2"
+                        >
+                            <span className="material-symbols-outlined text-sm">logout</span>
+                            Logout
+                        </button>
                         <button 
                             onClick={() => navigate('/admin/config')}
                             className="px-6 py-3 border border-white/10 text-on-surface-variant font-mono text-[10px] uppercase tracking-widest rounded-xl hover:bg-white/5 transition-all flex items-center gap-2"
