@@ -27,8 +27,25 @@ const Expertise = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${domain.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
               
               <div className="relative z-10 space-y-6">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all">
-                  <span className="material-symbols-outlined">{domain.icon}</span>
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all duration-500 shadow-inner relative overflow-hidden">
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {domain.icon.split(' ').map((iconName, idx) => (
+                      <span 
+                        key={idx} 
+                        className={`material-symbols-outlined transition-all duration-700 ${
+                          domain.icon.split(' ').length > 1 
+                            ? `absolute text-xl ${
+                                idx === 0 ? 'translate-x-[-20%] translate-y-[-20%] opacity-40 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0' :
+                                idx === 1 ? 'translate-x-[20%] translate-y-[20%] opacity-20 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 delay-75' :
+                                'z-10 text-2xl group-hover:scale-110'
+                              }` 
+                            : 'text-3xl'
+                        }`}
+                      >
+                        {iconName}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-xl font-headline font-bold text-on-surface tracking-tight group-hover:translate-x-1 transition-transform">{domain.title}</h3>
