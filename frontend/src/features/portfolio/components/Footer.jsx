@@ -15,8 +15,8 @@ const Footer = () => {
     { label: "GitHub", href: config.github_url, icon: "terminal" },
     { label: "LinkedIn", href: config.linkedin_url, icon: "share" },
     { label: "Email", href: `mailto:hello@abraham.cab`, icon: "mail" },
-    { label: "Resumé", href: config.cv_url, icon: "download" },
-  ];
+    config.cv_url && config.cv_url !== '#' && { label: "Resumé", href: config.cv_url, icon: "download" },
+  ].filter(Boolean);
 
   return (
     <footer className="w-full bg-surface border-t border-white/5 pt-20 pb-10 px-6 lg:px-20 overflow-hidden relative mt-auto">

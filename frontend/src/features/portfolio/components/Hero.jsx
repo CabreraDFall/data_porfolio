@@ -43,16 +43,18 @@ const Hero = () => {
             ))}
           </div>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 lg:gap-8 pt-4 lg:pt-8">
-            <a 
-              href={config.cv_url} 
-              target="_blank" 
-              rel="noreferrer"
-              className="group relative px-8 lg:px-10 py-4 lg:py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase text-xs lg:text-base tracking-widest rounded-xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-              <span className="material-symbols-outlined group-hover:rotate-12 transition-transform text-xl">download</span>
-              Descargar CV
-            </a>
+            {config.cv_url && config.cv_url !== '#' && (
+              <a 
+                href={config.cv_url} 
+                target="_blank" 
+                rel="noreferrer"
+                className="group relative px-8 lg:px-10 py-4 lg:py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold uppercase text-xs lg:text-base tracking-widest rounded-xl hover:shadow-[0_0_50px_rgba(88,245,209,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                <span className="material-symbols-outlined group-hover:rotate-12 transition-transform text-xl">download</span>
+                Descargar CV
+              </a>
+            )}
             <a 
               href="#projects" 
               className="px-8 lg:px-10 py-4 lg:py-5 border border-outline-variant/20 text-on-surface font-headline font-bold uppercase text-xs lg:text-base tracking-widest rounded-xl hover:bg-surface-container-high hover:border-primary/20 transition-all flex items-center justify-center gap-3"
