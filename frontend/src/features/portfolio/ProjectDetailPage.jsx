@@ -106,16 +106,18 @@ const ProjectDetailPage = () => {
                 </p>
             </div>
             {/* KPI Performance Box */}
-            <div className="glass-panel p-6 lg:p-10 rounded-3xl border border-primary/20 bg-primary/5 min-w-[280px] lg:min-w-[350px] space-y-8 shadow-[0_0_50px_rgba(88,245,209,0.05)]">
-                <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-primary border-b border-primary/10 pb-4">Verified Project Impact</h4>
-                <div className="grid grid-cols-1 gap-6">
+            <div className="glass-panel p-6 lg:p-10 rounded-3xl border border-primary/20 bg-primary/5 min-w-[280px] lg:min-w-[320px] space-y-10 shadow-[0_0_50px_rgba(88,245,209,0.05)]">
+                <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary border-b border-primary/10 pb-4 mb-2">Verified Project Impact</h4>
+                <div className="grid grid-cols-1 gap-8">
                     {project.kpis.map((kpi, i) => (
-                        <div key={i} className="flex items-center justify-between">
+                        <div key={i} className="flex flex-col gap-2 group/kpi">
                             <div className="flex items-center gap-3">
-                                <span className="material-symbols-outlined text-primary text-xl opacity-60">{kpi.icon}</span>
-                                <span className="text-sm text-on-surface-variant font-mono uppercase tracking-wider">{kpi.label}</span>
+                                <span className="material-symbols-outlined text-primary text-lg opacity-40 group-hover/kpi:opacity-100 transition-opacity">{kpi.icon}</span>
+                                <span className="text-[10px] text-on-surface-variant font-mono uppercase tracking-[0.2em]">{kpi.label}</span>
                             </div>
-                            <span className="text-3xl font-headline font-bold text-white">{kpi.value}</span>
+                            <span className="text-3xl lg:text-4xl font-headline font-bold text-white tracking-tight leading-none">
+                                {kpi.value}
+                            </span>
                         </div>
                     ))}
                 </div>
